@@ -1,3 +1,7 @@
+Please vote for Hades/SuperGiantGames in the Golden Joystick Awards! https://www.gamesradar.com/goldenjoystickawards/
+
+This program is a randomizer for the game Hades by SuperGiantGames: https://www.supergiantgames.com/games/hades/
+
 This program was mostly just a fun project to do on a lazy afternoon. The code was written by some friends and I, the former of which you can find at:
 
 https://github.com/sqrtroot
