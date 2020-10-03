@@ -1,10 +1,19 @@
 '''
 Running this Python file will present you with a randomized set of rules (mirror options, keepsakes, weapon type, pacts) for the game Hades
+
+This program was mostly just a fun project to do on a lazy afternoon. The code was written by some friends and I, whom you can find at:
+https://github.com/sqrtroot
+https://github.com/ManDeJan
+https://github.com/Druyv
+
+To run the randomiser, either download the file and run it using Python, or visit https://repl.it/@nickgoris/Hades-Randomizer to run it in an online shell
 '''
 
 from dataclasses import dataclass
 from random import choice,randint
 import os
+
+companions = ["Battie", "Mort", "Shady", "Rib", "Fidi", "Antos"]
 
 infernal_arms = {
   "Stygius":["Zagreus","Nemesis","Poseidon","Arthur"], 
@@ -101,6 +110,19 @@ def pick_keepsakes(different=True,keepsakes=keepsakes,floors=floor):
     else:
         dct = dict.fromkeys(dct,choice(keepsakes))
     return dct
+
+def pick_companions(different=True,companions=companions,floors=floor):
+    dct = {floor:None for floor in floors}
+    used_companions = []
+    if different:
+        for floor in dct:
+            c = choice(companions)
+            while c in used_companions and c != used_companions[-1]:
+                c = choice(keepsakes)
+            dct[floor] = c
+    else:
+        dct = dict.fromkeys(dct,choice(companions))
+    return dct
     
 settings = True
 while(True):
@@ -110,13 +132,18 @@ while(True):
         max_heat = max_heat if max_heat <= 60 else 60
 
         print()
+        
         rand_heat = bool(input("Force heat?\nPress enter to force max heat, type anything for random heat (lower than max heat) "))
 
         heat = randint(0,max_heat) if rand_heat else max_heat
 
         print()
 
-        diff = bool(input("Different keepsakes?\nPress enter for same keepsake every floor, type anything for different keepsakes "))
+        diff_k = bool(input("Different keepsakes?\nPress enter for same keepsake every floor, type anything for different keepsakes "))
+        
+        print()
+
+        diff_c = bool(input("Different companions?\nPress enter for same companions every floor, type anything for different companions "))
         settings = False
 
     clear()
@@ -126,7 +153,10 @@ while(True):
     weapon=choice(list(infernal_arms))
     print(f'Weapon:\n{weapon}({choice(infernal_arms[weapon])} aspect)\n')
 
-    print(f'{"Different keepsakes:" if diff else "All same keepsakes: "}',*[f'{key:8}: {value}' for key,value in pick_keepsakes(diff).items()],sep='\n')
+    print(f'{"Different keepsakes:" if diff_k else "All same keepsakes: "}',*[f'{key:8}: {value}' for key,value in pick_keepsakes(diff_k).items()],sep='\n')
+    
+    print(f'\n{"Different companions:" if diff_k else "Same companion: "}',*[f'{key:8}: {value}' for key,value in pick_companions(diff_c).items()],sep='\n')
+
 
     print()
     pacts = generate_pacts(pops,heat)
