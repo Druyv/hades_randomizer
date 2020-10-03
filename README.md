@@ -8,6 +8,10 @@ https://github.com/sqrtroot
 
 https://github.com/ManDeJan
 
+Idea came from:
+
+https://github.com/StpdFox
+
 
 To run the randomizer either download the file and run it using Python, or visit https://repl.it/@nickgoris/Hades-Randomizer to run it in an online shell
 
