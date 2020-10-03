@@ -17,3 +17,4 @@ Current roadmap:
 - Building it into a website
 - Try and balance PoP choices
 - Insert a way for players to lock in PoP choices before randomising the rest
+- A GUI?
