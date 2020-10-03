@@ -48,7 +48,7 @@ pop = {
     'Lasting Consequences' : [1, 2, 3],
     'Convenience Fee'      : [1, 2],
     'Jury Summons'         : [1, 2, 3],
-    'Extreme Measures'     : [1, 3, 5, 10],
+    'Extreme Measures'     : [1, 3, 6, 10],
     'Calisthenics Program' : [1, 2],
     'Benefits Package'     : [2, 5],
     'Middle Management'    : [1, 2],
