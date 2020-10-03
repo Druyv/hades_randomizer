@@ -110,19 +110,6 @@ def pick_keepsakes(different=True,keepsakes=keepsakes,floors=floor):
     else:
         dct = dict.fromkeys(dct,choice(keepsakes))
     return dct
-
-def pick_companions(different=True,companions=companions,floors=floor):
-    dct = {floor:None for floor in floors}
-    used_companions = []
-    if different:
-        for floor in dct:
-            c = choice(companions)
-            while c in used_companions and c != used_companions[-1]:
-                c = choice(keepsakes)
-            dct[floor] = c
-    else:
-        dct = dict.fromkeys(dct,choice(companions))
-    return dct
     
 settings = True
 while(True):
@@ -155,7 +142,7 @@ while(True):
 
     print(f'{"Different keepsakes:" if diff_k else "All same keepsakes: "}',*[f'{key:8}: {value}' for key,value in pick_keepsakes(diff_k).items()],sep='\n')
     
-    print(f'\n{"Different companions:" if diff_k else "Same companion: "}',*[f'{key:8}: {value}' for key,value in pick_companions(diff_c).items()],sep='\n')
+    print(f'\n{"Different companions:" if diff_k else "Same companion: "}',*[f'{key:8}: {value}' for key,value in pick_keepsakes(diff_c,companions).items()],sep='\n')
 
 
     print()
