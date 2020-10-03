@@ -12,3 +12,8 @@ https://github.com/ManDeJan
 To run the randomizer either download the file and run it using Python, or visit https://repl.it/@nickgoris/Hades-Randomizer to run it in an online shell
 
 If you have any suggestions or notice some mistakes/bugs, feel free to open an issue or create a pull request!
+
+Current roadmap:
+- Building it into a website
+- Try and balance PoP choices
+- Insert a way for players to lock in PoP choices before randomising the rest
