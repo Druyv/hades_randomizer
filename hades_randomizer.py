@@ -131,6 +131,7 @@ def pick_keepsakes(different=True,keepsakes=keepsakes,floors=floor):
                 if ks == "Sigil of the Dead" and floor != "Tartarus":
                     continue
             dct[floor] = ks
+            used_keepsakes.append(ks)
     else:
         dct = dict.fromkeys(dct,choice(keepsakes))
     return dct
