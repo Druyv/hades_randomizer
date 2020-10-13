@@ -13,8 +13,7 @@ Idea came from:
 https://github.com/StpdFox
 
 
-To run the randomizer either download the file and run it using Python, or visit https://repl.it/@nickgoris/Hades-Randomizer to run it in an online shell
-[![Run on Repl.it](https://repl.it/badge/github/Druyv/hades_randomizer)](https://repl.it/github/Druyv/hades_randomizer)
+To run the randomizer either download the file and run it using Python, or click [![Run on Repl.it](https://repl.it/badge/github/Druyv/hades_randomizer)](https://repl.it/github/Druyv/hades_randomizer) to run it in an online shell
 
 If you have any suggestions or notice some mistakes/bugs, feel free to open an issue or create a pull request!
 
