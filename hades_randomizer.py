@@ -44,21 +44,21 @@ mirror = [
 ]
 
 pop = {
-    'Hard Labor'           : [1, 2, 3, 4],
-    'Lasting Consequences' : [1, 2, 3],
+    'Hard Labor'           : [1, 2, 3, 4, 5],
+    'Lasting Consequences' : [1, 2, 3, 4],
     'Convenience Fee'      : [1, 2],
     'Jury Summons'         : [1, 2, 3],
     'Extreme Measures'     : [1, 3, 6, 10],
     'Calisthenics Program' : [1, 2],
     'Benefits Package'     : [2, 5],
-    'Middle Management'    : [1, 2],
-    'Underworld Customs'   : [1, 2],
-    'Forced Overtime'      : [2, 4, 6],
+    'Middle Management'    : [2],
+    'Underworld Customs'   : [2],
+    'Forced Overtime'      : [3, 6],
     'Heightened Security'  : [1],
     'Routine Inspection'   : [2, 4, 6, 8],
     'Damage Control'       : [1, 2],
     'Approval Process'     : [2, 5],
-    'Tight Deadline'       : [2, 5]
+    'Tight Deadline'       : [1, 3, 6]
 }
 
 clear = (lambda: os.system('cls')) if os.name == 'nt' else (lambda: os.system('clear')) if os.name == 'posix' else exit()
@@ -86,17 +86,39 @@ def generate_pacts(pacts, target, max_tries=100):
         while tries < max_tries:
             try:
                 c = choice(not_used)
-                nextHeath = heath(choices + [c])
-                if nextHeath < target:
+                nextHeat = heath(choices + [c])
+                if nextHeat < target:
                     choices += [c]
-                    not_used = list(filter(lambda e: e.name != c.name and e.level+nextHeath <= target, not_used))
-                elif nextHeath == target:
+                    not_used = list(filter(lambda e: e.name != c.name and e.level+nextHeat <= target, not_used))
+                elif nextHeat == target:
                     choices += [c]
                     return choices
             except IndexError:
                 return choices
         raise Exception("failed after max tries")
     return []
+
+# def generate_pacts(pacts, target, max_tries=100):
+#     if target:
+#         choices = {}
+#         tries = 0
+#         current_heat = 0
+#         while tries < max_tries:
+#             c = choice(list(pacts))
+#             if c not in choices:
+#                 choices[c] = pacts[c][0]
+#                 current_heat += pacts[c][0]
+#             else:
+#                 try:
+#                     choices[c] = pacts[c][c.index(choices[c])+1]
+#                     current_heat += pacts[c][c.index(choices[c])+1] - pacts[c][c.index(choices[c])]
+#                 except:
+#                     tries+=1
+#             if current_heat == target:
+#                 return choices, current_heat
+#         return choices,current_heat
+
+
 
 def pick_keepsakes(different=True,keepsakes=keepsakes,floors=floor):
     dct = {floor:None for floor in floors}
@@ -147,6 +169,9 @@ while(True):
 
 
     print()
+    # pacts,c_heat = generate_pacts(pop,heat)
+    # print(f'Pacts for heat {heat} (max heat was {max_heat}, actual heat is {c_heat}):')
+    # print(*[f'{p:20}: {h}' for p,h in pacts.items()], sep='\n')
     pacts = generate_pacts(pops,heat)
     print(f'Pacts for heat {heat} (max heat was {max_heat}, actual heat is {sum(p.level for p in pacts)}):')
     print(*pacts, sep='\n')
