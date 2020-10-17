@@ -128,8 +128,6 @@ def pick_keepsakes(different=True,keepsakes=keepsakes,floors=floor):
             ks = choice(keepsakes)
             while ks in used_keepsakes and ks != used_keepsakes[-1]:
                 ks = choice(keepsakes)
-                if ks == "Sigil of the Dead" and floor != "Tartarus":
-                    continue
             dct[floor] = ks
             used_keepsakes.append(ks)
     else:
